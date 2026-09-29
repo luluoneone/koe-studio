@@ -1,5 +1,7 @@
 # Koe Studio（声スタジオ）
 
+![Koe Studio](docs/banner.jpg)
+
 [English](README.en.md) ・ 日本語
 
 **Gemini TTS で、自分の声を登録して、演技を付けて読み上げる**ための、無料の小さなアプリです。

@@ -1,5 +1,7 @@
 # Koe Studio
 
+![Koe Studio](docs/banner.jpg)
+
 English ・ [日本語](README.md)
 
 A small, free app for **registering your own voice with Gemini TTS and having it read your scripts with direction**.
