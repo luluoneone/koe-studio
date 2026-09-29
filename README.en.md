@@ -5,6 +5,8 @@ English ・ [日本語](README.md)
 A small, free app for **registering your own voice with Gemini TTS and having it read your scripts with direction**.
 It runs on your computer and you use it in the browser. Works on Mac and Windows. The interface is available in English and Japanese.
 
+![Koe Studio screenshot](docs/screenshot-ja.jpg)
+
 - Register your own voice (Google's Voice Replication)
 - Direct the delivery ("bright and bouncy", "sad, with a trembling voice") and insert tags for pauses, sighs, and laughs
 - Every take is saved automatically as a WAV file in the `出力` (output) folder
