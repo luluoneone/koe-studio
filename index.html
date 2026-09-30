@@ -237,9 +237,10 @@ select.field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
       <span class="nav-text">設定</span></button>
     <div class="side-foot">
       <a class="more" href="https://luluapps.booth.pm/" target="_blank" rel="noopener"><b>LULU Apps のツール</b><span>映像編集とデザインを、もっと速く。BOOTH で公開中</span></a>
+      <div class="webonly apinote" style="margin:0" hidden>ブラウザ版（予備）</div>
       <div class="keystate"><span class="dot" id="key-dot"></span><span id="key-text">APIキー未設定</span></div>
       <div class="langsw" role="group" aria-label="Language"><button data-lang="ja">日本語</button><button data-lang="en">English</button></div>
-      <div>Koe Studio __VERSION__（非公式）</div>
+      <div>Koe Studio <span class="ver"></span>（非公式）</div>
     </div>
   </aside>
 
@@ -256,6 +257,7 @@ select.field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
         <li><span><a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Google AI Studio の APIキーの画面</a>で「APIキーを作成」を押し、キーをコピーします。</span></li>
         <li><span>下に貼り付けて「保存して始める」を押します。キーはこのパソコンの安全な保管場所（Mac はキーチェーン、Windows は資格情報マネージャー）に保存され、Google 以外には送られません。</span></li>
       </ol>
+      <p class="apinote webonly" hidden>ブラウザ版（予備）で開いています。サーバーを使わず、このブラウザから直接 Gemini API を呼びます。キーはこのタブの中だけで使い、「記憶する」を選んだときだけこのブラウザに保存します。音声は自動では保存されないので、「書き出し」で保存してください。</p>
       <div class="surface pad" style="display:grid;gap:12px">
         <label class="label" for="key-input" style="margin:0">APIキー</label>
         <div class="keyrow">
@@ -263,6 +265,7 @@ select.field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
           <button class="btn quiet" id="key-show" type="button" aria-label="キーを表示">表示</button>
         </div>
         <button class="btn primary lg" id="key-save"><span class="label-text">保存して始める</span></button>
+        <label class="webonly hint" style="display:flex;gap:8px;align-items:flex-start;margin:0" hidden><input type="checkbox" id="key-remember" style="margin-top:3px"><span>このブラウザにキーを記憶する（共用のパソコンでは記憶しないでください）</span></label>
         <div id="key-msg" aria-live="polite"></div>
         <p class="hint" style="margin:0">自分の声を登録するなら、AI Studio で「お支払い情報を設定」して有料枠にするのがおすすめです。無料枠では、送った録音や台詞が Google の改善に使われ、1日の回数にも上限があります。</p>
       </div>
@@ -389,7 +392,7 @@ select.field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
             <li>Gemini の仕様や料金は変わることがあります。動作の保証はありません。</li>
           </ul>
         </div>
-        <p class="hint">Koe Studio __VERSION__。Google とは無関係の非公式ツールです（MIT License）。作者：<a href="https://luluapps.booth.pm/" target="_blank" rel="noopener">LULU Apps</a></p>
+        <p class="hint">Koe Studio <span class="ver"></span>。Google とは無関係の非公式ツールです（MIT License）。作者：<a href="https://luluapps.booth.pm/" target="_blank" rel="noopener">LULU Apps</a></p>
       </div>
     </section>
   </main>
@@ -400,7 +403,7 @@ select.field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 <script>
 
 // ── 言語（日本語 / English）──
-const EN = {"読み上げ": "Speak", "声を登録": "Add voice", "声のライブラリ": "Voice library", "設定": "Settings", "LULU Apps のツール": "Tools by LULU Apps", "映像編集とデザインを、もっと速く。BOOTH で公開中": "Faster video editing and design. Available on BOOTH.", "APIキー未設定": "No API key", "APIキー設定済み": "API key set", "Koe Studio __VERSION__（非公式）": "Koe Studio __VERSION__ (unofficial)", "起動しています…": "Starting…", "Mac で「キーチェーンへのアクセス」を聞かれたら「常に許可」を押してください": "If macOS asks for Keychain access, choose “Always Allow”.", "はじめましょう": "Let’s get started", "Koe Studio は、Google の Gemini API（Gemini TTS）で自分の声を登録して、演技を付けて読み上げるアプリです。": "Koe Studio lets you register your own voice with Google’s Gemini API (Gemini TTS) and have it read your scripts with direction.", "声の登録や音声の生成は、すべて Gemini API を通して行います。使うたびに、あなたの APIキーに Google の料金がかかります（使った分だけ）。": "Registering voices and generating audio both go through the Gemini API. Each use is billed by Google to your API key (pay as you go).", "Google AI Studio の APIキーの画面": "Open the API keys page in Google AI Studio", "で「APIキーを作成」を押し、キーをコピーします。": ", click “Create API key”, and copy the key.", "下に貼り付けて「保存して始める」を押します。キーはこのパソコンの安全な保管場所（Mac はキーチェーン、Windows は資格情報マネージャー）に保存され、Google 以外には送られません。": "Paste it below and click “Save and start”. The key is stored in this computer’s secure storage (Keychain on Mac, Credential Manager on Windows) and is sent only to Google.", "APIキー": "API key", "キーを表示": "Show key", "表示": "Show", "隠す": "Hide", "保存して始める": "Save and start", "確認しています…": "Checking…", "自分の声を登録するなら、AI Studio で「お支払い情報を設定」して有料枠にするのがおすすめです。無料枠では、送った録音や台詞が Google の改善に使われ、1日の回数にも上限があります。": "If you register your own voice, we recommend enabling billing in AI Studio (paid tier). On the free tier, your recordings and scripts may be used to improve Google’s products, and daily limits apply.", "台本を書いて、声と演技を選んで生成します。できたテイクは自動で保存されます。": "Write a script, pick a voice and delivery, and generate. Takes are saved automatically.", "生成のたびに Google の Gemini API を使うため、あなたの APIキーに料金がかかります（使った分だけ）。無料枠は1モデルにつき1日10回までです。": "Every generation calls Google’s Gemini API and is billed to your API key (pay as you go). The free tier allows 10 requests per model per day.", "タグを入れる": "Insert tag", "タグ": "Tags", "間": "Pause", "ため息": "Sigh", "笑い": "Laugh", "息": "Breath", "咳": "Cough", "ここに台詞を書きます。\n例：おっ、いいじゃないか！<laugh>ちゃんとできてる。": "Write your lines here.\nExample: Oh, nice! <laugh> You nailed it.", "台本": "Script", "生成": "Generate", "生成中…": "Generating…", "声": "Voice", "モデル": "Model", "演技重視": "Best acting", "速い・安い": "Faster, cheaper", "演技の指示": "Delivery", "例：静かに始めて、最後は強く": "e.g. Start quietly, end strong", "穏やかに、ゆっくりと": "Calm and slow", "明るく、弾んだ声で": "Bright and bouncy", "悲しく、声を震わせて": "Sad, with a trembling voice", "怒りを抑えて、毅然と": "Holding back anger, firm", "ささやくように": "Whispering", "形容詞だけより「静かに始めて、最後は強く」のように声の動きまで書くと、抑揚が付きます。": "Describe how the voice moves (“start quietly, end strong”), not just an adjective, to get more expressive delivery.", "テイク": "Takes", "出力フォルダを開く": "Open output folder", "まだテイクはありません。台詞を書いて「生成」を押すと、ここに並びます。": "No takes yet. Write a script and click “Generate” to see them here.", "まだテイクはありません。": "No takes yet.", "自分の声を Gemini に登録します。3つの手順を順番に進めてください。": "Register your own voice with Gemini in three steps.", "登録にも Gemini API を使います。": "Registration also uses the Gemini API.", "名前を付ける": "Name it", "あとで声を選ぶときに表示されます。英数字がおすすめです。": "Shown when you pick a voice later. Letters and numbers work best.", "見本の録音を入れる": "Add a sample recording", "10〜30秒の、自然な話し声。台本を読むより、誰かに話しかけるように話すと抑揚が出ます。変換・編集していない元のファイル（QuickTime の m4a など）を使います。": "10–30 seconds of natural speech. Talking to someone sounds more expressive than reading. Use the original, unedited file (for example an m4a from QuickTime).", "見本の録音を選ぶ": "Choose the sample recording", "同意文の録音を入れる": "Add the consent recording", "見本と同じ人・同じ部屋・同じマイクで、次の文を一字一句そのまま読みます。": "Same person, same room, same microphone as the sample. Read this statement exactly.", "私はこの音声の所有者であり、Googleがこの音声を使用して音声合成モデルを作成することを承認します。": "I am the owner of this voice and I consent to Google using this voice to create a synthetic voice model.", "コピー": "Copy", "コピーしました": "Copied", "同意文の録音を選ぶ": "Choose the consent recording", "登録の条件": "Requirements", "名前を入れた": "Name entered", "見本が10〜30秒": "Sample is 10–30 seconds", "同意文の録音を入れた": "Consent recording added", "声を登録する": "Register voice", "登録しています…": "Registering…", "登録できるのは、同意文を自分で読んだ本人の声だけです。音声変換ソフトで作った声や、WAV に変換した録音は「合成音声」と判定されて登録できないことがあります。": "Only the voice of the person who read the consent statement can be registered. Voices made with voice changers, or recordings converted to WAV, may be flagged as synthetic and rejected.", "登録した声です。保存期間は1年（1プロジェクト200個まで）。": "Your registered voices. Kept for one year (up to 200 per project).", "APIキーと、使う前に知っておくことです。": "Your API key and what to know before you start.", "キーを入れ直す": "Replace key", "このパソコンからキーを消す": "Remove key from this computer", "使う前に知っておくこと": "Before you start", "登録できるのは、同意文を自分で読んだ": "You can only register", "本人の声だけ": "your own voice", "です。他人の声や、なりすましには使わないでください。": ", read by you in the consent statement. Don’t use other people’s voices or impersonate anyone.", "料金は Google に対して、使った分だけかかります（利用者の負担）。最新の料金は": "Google bills you for what you use (you pay). For current prices, see the", "Gemini API の料金ページ": "Gemini API pricing page", "で確認してください。": ".", "無料枠は1モデルにつき1日10回までで、送った内容が Google の改善に使われます。": "The free tier allows 10 requests per model per day, and what you send may be used to improve Google’s products.", "EU・イギリス・スイスにいる人は、Google の規約により有料枠でしか使えません。": "In the EU, UK, and Switzerland, Google’s terms require the paid tier.", "Gemini の仕様や料金は変わることがあります。動作の保証はありません。": "Gemini’s features and prices may change. No warranty.", "Koe Studio __VERSION__。Google とは無関係の非公式ツールです（MIT License）。作者：": "Koe Studio __VERSION__. Unofficial tool, not affiliated with Google (MIT License). Made by ", "APIキーを貼り付けてください。": "Paste your API key.", "Google の既製の声": "Google stock voices", "このパソコンに保存した APIキーを消します。登録した声は Google 側に残ります。よろしいですか？": "Remove the API key saved on this computer? Your registered voices stay with Google.", "このパソコンの安全な保管場所に保存したキーを使っています。": "Using the key saved in this computer’s secure storage.", "環境変数 GEMINI_API_KEY のキーを使っています（画面からは変更できません）。": "Using the key from the GEMINI_API_KEY environment variable (can’t be changed here).", "一時停止": "Pause", "再生": "Play", "削除できませんでした：": "Couldn’t delete: ", "台詞を書いてください。": "Write a script first.", "対応していない形式です（m4a / wav / mp3）": "Unsupported format (m4a / wav / mp3)", "波形（クリックで位置を移動）": "Waveform (click to seek)", "状態を確認できませんでした：": "Couldn’t check status: ", "生成できませんでした：": "Couldn’t generate: ", "登録した声を読めませんでした：": "Couldn’t load your voices: ", "登録できませんでした：": "Couldn’t register: ", "自分で登録した声": "Your voices", "自分で登録した声（まだありません）": "Your voices (none yet)", "複製した声": "Replicated", "説明文から作った声": "Designed", "ファイルをドロップ、またはクリックして選ぶ": "Drop a file, or click to choose", "この声で読み上げ": "Use this voice", "削除": "Delete", "まだ登録した声はありません。": "No voices yet.", "差し替える": "Replace", "見本は10〜30秒にしてください": "The sample must be 10–30 seconds", "読み込み中…": "Loading…", "書き出し": "Export"};
+const EN = {"読み上げ": "Speak", "声を登録": "Add voice", "声のライブラリ": "Voice library", "設定": "Settings", "LULU Apps のツール": "Tools by LULU Apps", "映像編集とデザインを、もっと速く。BOOTH で公開中": "Faster video editing and design. Available on BOOTH.", "APIキー未設定": "No API key", "APIキー設定済み": "API key set", "起動しています…": "Starting…", "Mac で「キーチェーンへのアクセス」を聞かれたら「常に許可」を押してください": "If macOS asks for Keychain access, choose “Always Allow”.", "はじめましょう": "Let’s get started", "Koe Studio は、Google の Gemini API（Gemini TTS）で自分の声を登録して、演技を付けて読み上げるアプリです。": "Koe Studio lets you register your own voice with Google’s Gemini API (Gemini TTS) and have it read your scripts with direction.", "声の登録や音声の生成は、すべて Gemini API を通して行います。使うたびに、あなたの APIキーに Google の料金がかかります（使った分だけ）。": "Registering voices and generating audio both go through the Gemini API. Each use is billed by Google to your API key (pay as you go).", "Google AI Studio の APIキーの画面": "Open the API keys page in Google AI Studio", "で「APIキーを作成」を押し、キーをコピーします。": ", click “Create API key”, and copy the key.", "下に貼り付けて「保存して始める」を押します。キーはこのパソコンの安全な保管場所（Mac はキーチェーン、Windows は資格情報マネージャー）に保存され、Google 以外には送られません。": "Paste it below and click “Save and start”. The key is stored in this computer’s secure storage (Keychain on Mac, Credential Manager on Windows) and is sent only to Google.", "APIキー": "API key", "キーを表示": "Show key", "表示": "Show", "隠す": "Hide", "保存して始める": "Save and start", "確認しています…": "Checking…", "自分の声を登録するなら、AI Studio で「お支払い情報を設定」して有料枠にするのがおすすめです。無料枠では、送った録音や台詞が Google の改善に使われ、1日の回数にも上限があります。": "If you register your own voice, we recommend enabling billing in AI Studio (paid tier). On the free tier, your recordings and scripts may be used to improve Google’s products, and daily limits apply.", "台本を書いて、声と演技を選んで生成します。できたテイクは自動で保存されます。": "Write a script, pick a voice and delivery, and generate. Takes are saved automatically.", "生成のたびに Google の Gemini API を使うため、あなたの APIキーに料金がかかります（使った分だけ）。無料枠は1モデルにつき1日10回までです。": "Every generation calls Google’s Gemini API and is billed to your API key (pay as you go). The free tier allows 10 requests per model per day.", "タグを入れる": "Insert tag", "タグ": "Tags", "間": "Pause", "ため息": "Sigh", "笑い": "Laugh", "息": "Breath", "咳": "Cough", "ここに台詞を書きます。\n例：おっ、いいじゃないか！<laugh>ちゃんとできてる。": "Write your lines here.\nExample: Oh, nice! <laugh> You nailed it.", "台本": "Script", "生成": "Generate", "生成中…": "Generating…", "声": "Voice", "モデル": "Model", "演技重視": "Best acting", "速い・安い": "Faster, cheaper", "演技の指示": "Delivery", "例：静かに始めて、最後は強く": "e.g. Start quietly, end strong", "穏やかに、ゆっくりと": "Calm and slow", "明るく、弾んだ声で": "Bright and bouncy", "悲しく、声を震わせて": "Sad, with a trembling voice", "怒りを抑えて、毅然と": "Holding back anger, firm", "ささやくように": "Whispering", "形容詞だけより「静かに始めて、最後は強く」のように声の動きまで書くと、抑揚が付きます。": "Describe how the voice moves (“start quietly, end strong”), not just an adjective, to get more expressive delivery.", "テイク": "Takes", "出力フォルダを開く": "Open output folder", "まだテイクはありません。台詞を書いて「生成」を押すと、ここに並びます。": "No takes yet. Write a script and click “Generate” to see them here.", "まだテイクはありません。": "No takes yet.", "自分の声を Gemini に登録します。3つの手順を順番に進めてください。": "Register your own voice with Gemini in three steps.", "登録にも Gemini API を使います。": "Registration also uses the Gemini API.", "名前を付ける": "Name it", "あとで声を選ぶときに表示されます。英数字がおすすめです。": "Shown when you pick a voice later. Letters and numbers work best.", "見本の録音を入れる": "Add a sample recording", "10〜30秒の、自然な話し声。台本を読むより、誰かに話しかけるように話すと抑揚が出ます。変換・編集していない元のファイル（QuickTime の m4a など）を使います。": "10–30 seconds of natural speech. Talking to someone sounds more expressive than reading. Use the original, unedited file (for example an m4a from QuickTime).", "見本の録音を選ぶ": "Choose the sample recording", "同意文の録音を入れる": "Add the consent recording", "見本と同じ人・同じ部屋・同じマイクで、次の文を一字一句そのまま読みます。": "Same person, same room, same microphone as the sample. Read this statement exactly.", "私はこの音声の所有者であり、Googleがこの音声を使用して音声合成モデルを作成することを承認します。": "I am the owner of this voice and I consent to Google using this voice to create a synthetic voice model.", "コピー": "Copy", "コピーしました": "Copied", "同意文の録音を選ぶ": "Choose the consent recording", "登録の条件": "Requirements", "名前を入れた": "Name entered", "見本が10〜30秒": "Sample is 10–30 seconds", "同意文の録音を入れた": "Consent recording added", "声を登録する": "Register voice", "登録しています…": "Registering…", "登録できるのは、同意文を自分で読んだ本人の声だけです。音声変換ソフトで作った声や、WAV に変換した録音は「合成音声」と判定されて登録できないことがあります。": "Only the voice of the person who read the consent statement can be registered. Voices made with voice changers, or recordings converted to WAV, may be flagged as synthetic and rejected.", "登録した声です。保存期間は1年（1プロジェクト200個まで）。": "Your registered voices. Kept for one year (up to 200 per project).", "APIキーと、使う前に知っておくことです。": "Your API key and what to know before you start.", "キーを入れ直す": "Replace key", "このパソコンからキーを消す": "Remove key from this computer", "使う前に知っておくこと": "Before you start", "登録できるのは、同意文を自分で読んだ": "You can only register", "本人の声だけ": "your own voice", "です。他人の声や、なりすましには使わないでください。": ", read by you in the consent statement. Don’t use other people’s voices or impersonate anyone.", "料金は Google に対して、使った分だけかかります（利用者の負担）。最新の料金は": "Google bills you for what you use (you pay). For current prices, see the", "Gemini API の料金ページ": "Gemini API pricing page", "で確認してください。": ".", "無料枠は1モデルにつき1日10回までで、送った内容が Google の改善に使われます。": "The free tier allows 10 requests per model per day, and what you send may be used to improve Google’s products.", "EU・イギリス・スイスにいる人は、Google の規約により有料枠でしか使えません。": "In the EU, UK, and Switzerland, Google’s terms require the paid tier.", "Gemini の仕様や料金は変わることがあります。動作の保証はありません。": "Gemini’s features and prices may change. No warranty.", "APIキーを貼り付けてください。": "Paste your API key.", "Google の既製の声": "Google stock voices", "このパソコンに保存した APIキーを消します。登録した声は Google 側に残ります。よろしいですか？": "Remove the API key saved on this computer? Your registered voices stay with Google.", "このパソコンの安全な保管場所に保存したキーを使っています。": "Using the key saved in this computer’s secure storage.", "環境変数 GEMINI_API_KEY のキーを使っています（画面からは変更できません）。": "Using the key from the GEMINI_API_KEY environment variable (can’t be changed here).", "一時停止": "Pause", "再生": "Play", "削除できませんでした：": "Couldn’t delete: ", "台詞を書いてください。": "Write a script first.", "対応していない形式です（m4a / wav / mp3）": "Unsupported format (m4a / wav / mp3)", "波形（クリックで位置を移動）": "Waveform (click to seek)", "状態を確認できませんでした：": "Couldn’t check status: ", "生成できませんでした：": "Couldn’t generate: ", "登録した声を読めませんでした：": "Couldn’t load your voices: ", "登録できませんでした：": "Couldn’t register: ", "自分で登録した声": "Your voices", "自分で登録した声（まだありません）": "Your voices (none yet)", "複製した声": "Replicated", "説明文から作った声": "Designed", "ファイルをドロップ、またはクリックして選ぶ": "Drop a file, or click to choose", "この声で読み上げ": "Use this voice", "削除": "Delete", "まだ登録した声はありません。": "No voices yet.", "差し替える": "Replace", "見本は10〜30秒にしてください": "The sample must be 10–30 seconds", "読み込み中…": "Loading…", "書き出し": "Export", "（非公式）": " (unofficial)", "。Google とは無関係の非公式ツールです（MIT License）。作者：": ". Unofficial tool, not affiliated with Google (MIT License). Made by ", "ブラウザ版（予備）": "Browser version (fallback)", "ブラウザ版（予備）で開いています。サーバーを使わず、このブラウザから直接 Gemini API を呼びます。キーはこのタブの中だけで使い、「記憶する」を選んだときだけこのブラウザに保存します。音声は自動では保存されないので、「書き出し」で保存してください。": "You opened the browser version (fallback). It calls the Gemini API directly from this browser, without the local server. Your key is used only in this tab and saved to this browser only if you choose to remember it. Audio isn’t saved automatically — use “Export”.", "このブラウザにキーを記憶する（共用のパソコンでは記憶しないでください）": "Remember the key in this browser (don’t do this on a shared computer)", "このブラウザに記憶したキーを使っています。": "Using the key remembered in this browser.", "このタブの中だけでキーを使っています（タブを閉じると消えます）。": "Using the key only in this tab (it’s cleared when you close the tab).", "台本を書いて、声と演技を選んで生成します。できたテイクは「書き出し」で保存します。": "Write a script, pick a voice and delivery, and generate. Save takes with “Export”.", "「書き出し」で保存します": "Save with “Export”", "合成音声またはAIの透かしが入っていると判定されました。変換・加工していない、本人の生の録音を使ってください（音声変換ソフトで作った声は登録できません）。": "The recording was judged to contain synthetic speech or an AI watermark. Use an unedited recording of your own voice (voices made with voice changers can’t be registered).", "安全確認に通りませんでした。見本と同意文が同じ人・同じ部屋・同じマイクで録られているか確認してください。": "The safety check failed. Make sure the sample and the consent statement were recorded by the same person, in the same room, with the same microphone.", "APIキーが正しくありません。Google AI Studio でキーをコピーし直して、もう一度貼り付けてください。": "The API key is not valid. Copy it again from Google AI Studio and paste it here.", "利用上限に達しました（無料枠は1モデル1日10回）。時間をおくか、有料枠にしてください。": "Rate limit reached (the free tier allows 10 requests per model per day). Wait, or switch to the paid tier.", "前払い残高とクレジットが0です。Google AI Studio の Billing を確認してください。": "Your prepaid balance and credits are 0. Check Billing in Google AI Studio.", "APIキーの形が正しくありません。Google AI Studio でコピーしたキーをそのまま貼り付けてください。": "This doesn’t look like an API key. Paste the key exactly as copied from Google AI Studio.", "声の名前を入れてください。": "Enter a name for the voice.", "台詞と声を選んでください。": "Enter a script and choose a voice."};
 const JA = Object.fromEntries(Object.entries(EN).map(([k, v]) => [v, k]));
 let LANG = (() => { try { const s = localStorage.getItem("koe.lang"); if (s) return s; } catch {} return (navigator.language || "").toLowerCase().startsWith("ja") ? "ja" : "en"; })();
 const T = s => LANG === "en" ? (EN[s] ?? s) : s;
@@ -424,7 +427,70 @@ document.querySelectorAll(".langsw button").forEach(b => b.onclick = () => {
 });
 
 const TOKEN = "__TOKEN__";
-const PREBUILT = __PREBUILT__;
+const PREBUILT = ["Zephyr", "Puck", "Charon", "Kore", "Fenrir", "Leda", "Orus", "Aoede", "Callirrhoe", "Autonoe", "Enceladus", "Iapetus", "Umbriel", "Algieba", "Despina", "Erinome", "Algenib", "Rasalgethi", "Laomedeia", "Achernar", "Alnilam", "Schedar", "Gacrux", "Pulcherrima", "Achird", "Zubenelgenubi", "Vindemiatrix", "Sadachbia", "Sadaltager", "Sulafat"];
+// ブラウザ版（予備）：index.html をファイルとして直接開いたとき。サーバーを通さず、ブラウザから Gemini API を呼ぶ
+const WEB = location.protocol === "file:";
+const VERSION = "__VERSION__".startsWith("__") ? "" : "__VERSION__";
+const GAPI = "https://generativelanguage.googleapis.com/v1beta";
+const KEY_NAME = "koe.apiKey";
+const MODELS = { flash: "gemini-3.8-flash-tts", lite: "gemini-3.8-flash-lite-tts" };
+const MIME = { m4a: "audio/mp4", mp4: "audio/mp4", wav: "audio/wav", mp3: "audio/mpeg" };
+function webKey() { try { return sessionStorage.getItem(KEY_NAME) || localStorage.getItem(KEY_NAME); } catch { return null; } }
+function webExplain(status, m) {
+  m = String(m || "");
+  if (/synthetic speech/.test(m)) return T("合成音声またはAIの透かしが入っていると判定されました。変換・加工していない、本人の生の録音を使ってください（音声変換ソフトで作った声は登録できません）。");
+  if (/safety checks/.test(m)) return T("安全確認に通りませんでした。見本と同意文が同じ人・同じ部屋・同じマイクで録られているか確認してください。");
+  if (/API key not valid|API_KEY_INVALID/.test(m)) return T("APIキーが正しくありません。Google AI Studio でキーをコピーし直して、もう一度貼り付けてください。");
+  if (status === 429) return T("利用上限に達しました（無料枠は1モデル1日10回）。時間をおくか、有料枠にしてください。");
+  if (status === 402) return T("前払い残高とクレジットが0です。Google AI Studio の Billing を確認してください。");
+  return `HTTP ${status}: ${m.slice(0, 300)}`;
+}
+async function gfetch(path, { method = "GET", body, key } = {}) {
+  let r;
+  for (let attempt = 0; attempt < 3; attempt++) {   // 一時的な混雑（5xx）は、少し待って2回まで再試行する
+    r = await fetch(GAPI + path, { method, headers: { "x-goog-api-key": key || webKey() || "", ...(body ? { "Content-Type": "application/json" } : {}) }, body: body ? JSON.stringify(body) : undefined });
+    if (r.status < 500 || attempt === 2) break;
+    await new Promise(res => setTimeout(res, 4000 * (attempt + 1)));
+  }
+  const text = await r.text(); let j = {}; try { j = text ? JSON.parse(text) : {}; } catch {}
+  if (!r.ok) { console.error("[Gemini API]", r.status, text); throw new Error(webExplain(r.status, j?.error?.message || text)); }
+  return j;
+}
+async function webApi(path, body = {}) {
+  if (path === "/api/status") { const k = webKey(); let saved = false; try { saved = !!localStorage.getItem(KEY_NAME); } catch {} return { configured: !!k, source: k ? (saved ? "browser" : "session") : null }; }
+  if (path === "/api/key") {
+    const key = (body.key || "").trim();
+    if (!/^[A-Za-z0-9_\-]{20,200}$/.test(key)) throw new Error(T("APIキーの形が正しくありません。Google AI Studio でコピーしたキーをそのまま貼り付けてください。"));
+    await gfetch("/voices?type=replicated", { key });   // 料金のかからない呼び出しでキーを確かめる
+    try { sessionStorage.setItem(KEY_NAME, key); if ($("#key-remember").checked) localStorage.setItem(KEY_NAME, key); else localStorage.removeItem(KEY_NAME); } catch {}
+    return { ok: true };
+  }
+  if (path === "/api/key/delete") { try { sessionStorage.removeItem(KEY_NAME); localStorage.removeItem(KEY_NAME); } catch {} return { ok: true }; }
+  if (path === "/api/voices") {
+    const out = [];
+    for (const t of ["replicated", "prompted"]) (await gfetch(`/voices?type=${t}`)).voices?.forEach(v => out.push({ id: v.id, name: v.display_name || v.displayName || v.id, type: t }));
+    return { voices: out };
+  }
+  if (path === "/api/register") {
+    const name = (body.name || "").trim(); if (!name) throw new Error(T("声の名前を入れてください。"));
+    const part = f => ({ mime_type: MIME[(f.filename || "").split(".").pop().toLowerCase()] || "audio/mp4", data: f.data });
+    const v = await gfetch("/voices", { method: "POST", body: { voice: { model: MODELS.flash, type: "replicated", display_name: name, replicated: { source_audio: part(body.source), consent_audio: part(body.consent) } }, store: true } });
+    return { id: v.id, name };
+  }
+  if (path === "/api/speak") {
+    const text = (body.text || "").trim(); if (!text || !body.voice) throw new Error(T("台詞と声を選んでください。"));
+    const content = { type: "text", text }; if ((body.style || "").trim()) content.annotations = [{ type: "speech_metadata", style: body.style.trim() }];
+    const it = await gfetch("/interactions", { method: "POST", body: { model: MODELS[body.model] || MODELS.flash, input: [{ type: "user_input", content: [content] }], response_format: { type: "audio" }, generation_config: { speech_config: [{ voice: body.voice }] } } });
+    // 音声は steps[].content[] の type:"audio" に入って返る（SDK の output_audio はこれを取り出した便宜上の名前）
+    const audio = (it.steps || []).flatMap(s => s.content || []).find(c => c.type === "audio")?.data || it.output_audio?.data;
+    if (!audio) throw new Error("HTTP 200: no audio");
+    const d = new Date(), pad = n => String(n).padStart(2, "0");
+    const stem = text.replace(/<[^>]*>/g, "").replace(/[\/\\:*?"<>|\s]/g, "").slice(0, 16) || "voice";
+    return { file: `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}_${stem}.wav`, audio };
+  }
+  if (path === "/api/delete") { await gfetch(`/voices/${encodeURIComponent(body.id)}`, { method: "DELETE" }); return { ok: true }; }
+  throw new Error("not available in the browser version");
+}
 const $ = s => document.querySelector(s);
 const IS_MAC = /Mac|iPhone|iPad/.test(navigator.platform);
 let voices = [], model = "flash", actx = null;
@@ -438,6 +504,7 @@ const ICON = {
 };
 
 async function api(path, body) {
+  if (WEB) return webApi(path, body);
   const r = await fetch(path, body === undefined ? { headers: { "X-Token": TOKEN, "X-Lang": LANG } } : {
     method: "POST", headers: { "X-Token": TOKEN, "X-Lang": LANG, "Content-Type": "application/json" }, body: JSON.stringify(body)
   });
@@ -502,6 +569,8 @@ async function renderSettings() {
     const st = await api("/api/status");
     $("#key-where").textContent = st.source === "env"
       ? T("環境変数 GEMINI_API_KEY のキーを使っています（画面からは変更できません）。")
+      : st.source === "browser" ? T("このブラウザに記憶したキーを使っています。")
+      : st.source === "session" ? T("このタブの中だけでキーを使っています（タブを閉じると消えます）。")
       : T("このパソコンの安全な保管場所に保存したキーを使っています。");
     $("#key-change").hidden = $("#key-delete").hidden = st.source === "env";
   } catch (e) { msg($("#settings-msg"), e.message, "err"); }
@@ -640,7 +709,7 @@ async function makeTake({ audio, file, text, voiceName, model: m, style }) {
   el.querySelector(".take-text").textContent = text;
   el.querySelector(".v").textContent = voiceName;
   if (style) el.querySelector(".s").textContent = style;
-  const a = el.querySelector(".dl"); a.href = url; a.download = file; a.title = LANG === "en" ? `Saved to 出力/${file}` : `出力/${file} に保存済み`;
+  const a = el.querySelector(".dl"); a.href = url; a.download = file; a.title = WEB ? T("「書き出し」で保存します") : LANG === "en" ? `Saved to 出力/${file}` : `出力/${file} に保存済み`;
   const au = new Audio(url), cv = el.querySelector(".wave"), bt = el.querySelector(".play"), tm = el.querySelector(".time");
   const dur = buf ? buf.duration : 0;
   tm.textContent = fmt(dur);
@@ -715,6 +784,13 @@ $("#register").onclick = async () => {
   busy($("#register"), false, T("声を登録する")); check();
 };
 
+// ブラウザ版の表示の切り替え
+document.querySelectorAll(".ver").forEach(e => e.textContent = VERSION || (LANG === "en" ? "(browser)" : "（ブラウザ版）"));
+if (WEB) {
+  document.querySelectorAll(".webonly").forEach(e => e.hidden = false);
+  $("#open-output").hidden = true;
+  const p = $("#view-speak .head p"); if (p) p.textContent = "台本を書いて、声と演技を選んで生成します。できたテイクは「書き出し」で保存します。";
+}
 applyLang();
 init();
 </script>

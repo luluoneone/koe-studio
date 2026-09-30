@@ -43,6 +43,23 @@ To quit, press `Ctrl + C` in the terminal window that opened at launch.
 - **Windows: "Windows protected your PC"**: click **More info** → **Run anyway**.
 - **Mac asks for Keychain access**: this is to read your saved key. Enter your password and choose **Always Allow**.
 
+## If it won't launch: browser version (fallback)
+
+If the launchers (`.command` / `.bat`) don't work — for example you can't install `uv`, or your work computer is locked down —
+**just double-click `index.html` (or drag it into a browser window)**.
+In this mode the page calls the Gemini API directly from your browser, without the local server.
+
+| | Standard (launcher) | Browser version (open `index.html` directly) |
+|---|---|---|
+| Requirements | `uv` (offered on first launch) | Just a browser |
+| Where the API key is kept | Keychain on Mac, Credential Manager on Windows | Only in that tab. Saved to the browser only if you choose "Remember the key in this browser" |
+| Generated audio | Saved automatically to the `出力` folder | Not saved automatically. Use "Export" on each take |
+| Pricing | Gemini API (your API key) | Same |
+
+- The sidebar shows "Browser version (fallback)".
+- Don't remember the key on a shared computer. The key is sent only from your browser to Google.
+- Tested with Google Chrome.
+
 ## Registering your voice
 
 In **Add voice**, add two recordings. Record both **with the same person, in the same room, with the same microphone**.
@@ -79,6 +96,7 @@ In the EU, UK, and Switzerland, Google's terms require the paid tier.
 
 | Message | What to do |
 |---|---|
+| The launcher doesn't work | Open `index.html` directly and use the browser version (fallback) |
 | The API key is not valid | Copy the key again in AI Studio, then Settings → Replace key |
 | Rate limit reached (429) | You hit the free tier's 10 requests per day. Wait until tomorrow or switch to the paid tier |
 | Judged to contain synthetic speech | Use the original, unconverted recording |
