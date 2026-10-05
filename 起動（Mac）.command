@@ -12,5 +12,6 @@ if [ -z "$UV" ]; then
   UV="$HOME/.local/bin/uv"
 fi
 "$UV" run -q app.py
-status=$?
-if [ $status -ne 0 ]; then echo "終了コード $status で止まりました。上のメッセージを確認してください。"; read -k 1; fi
+code=$?  # zsh では status は書き換えられない名前なので使わない
+# Ctrl+C で止めたとき（130）は正常な終了として扱う
+if [ $code -ne 0 ] && [ $code -ne 130 ]; then echo "終了コード $code で止まりました。上のメッセージを確認してください。"; read -k 1; fi
